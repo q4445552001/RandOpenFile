@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
@@ -37,11 +32,6 @@ namespace Rand_open_file
                 if (j || String.IsNullOrEmpty(textBox2.Text.Trim()))
                     File.AppendAllText(filedata, filename + Environment.NewLine);
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -103,7 +93,8 @@ namespace Rand_open_file
         {
             FolderBrowserDialog path = new FolderBrowserDialog();
             path.ShowDialog();
-            this.textBox3.Text = path.SelectedPath;
+            if(path.SelectedPath != "")
+                this.textBox3.Text = path.SelectedPath;
         }
     }
 
