@@ -121,7 +121,8 @@ namespace RandOpenFile
             var path = new OpenFileDialog
             {
                 Multiselect = true,
-                Filter = "Video Files(*.mp4;*.mkv)|*.mp4;*.mkv;*.txt",
+                //Filter = "Video Files(*.mp4;*.mkv)|*.mp4;*.mkv;*.txt",
+                Filter = "Video Files(*.mp4;*.mkv)|*.mp4;*.mkv",
             };
 
             if (path.ShowDialog() == DialogResult.OK)
@@ -201,7 +202,8 @@ namespace RandOpenFile
         /// <returns></returns>
         private bool FilterFile(string filename)
         {
-            var Filter = new string[] { ".mp4", ".mkv", ".txt" };
+            var Filter = new List<string> { ".mp4", ".mkv" };
+            Filter.Add(".txt");
             var excludeFile = textBox2.Text.Replace("\n", "").ToLower().Split('\r');
 
             if (!excludeFile.Where(x => x.ToLower() == filename.ToLower()).Any()) //未在排除檔案名單內
