@@ -64,24 +64,33 @@ namespace RandOpenFile
                 var Rnd = new Random();
                 var rand = Rnd.Next(0, fileCount);
                 var lines = new List<string>(File.ReadAllLines(fileTemp));
+                var FileOK = FilterFile(lines[rand]);
+                if (FileOK)
+                    FileOK = FilterFolder(Path.GetDirectoryName(lines[rand]));
 
-                var run = new Process
+                if (FileOK)
                 {
-                    StartInfo = new ProcessStartInfo
+                    var run = new Process
                     {
-                        FileName = Path.Combine("explorer.exe"),
-                        Arguments = lines[rand],
-                        UseShellExecute = false,
-                        RedirectStandardInput = true,
-                        RedirectStandardError = true,
-                        RedirectStandardOutput = true,
-                        CreateNoWindow = false
-                    }
-                };
-                run.Start();
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = Path.Combine("explorer.exe"),
+                            Arguments = lines[rand],
+                            UseShellExecute = false,
+                            RedirectStandardInput = true,
+                            RedirectStandardError = true,
+                            RedirectStandardOutput = true,
+                            CreateNoWindow = false
+                        }
+                    };
+                    run.Start();
+                }
 
                 lines.RemoveAt(rand);
                 File.WriteAllLines(fileTemp, lines.ToArray());
+
+                if (!FileOK)
+                    OKBtn_Click(sender, e);
             }
         }
 
@@ -112,7 +121,7 @@ namespace RandOpenFile
             var path = new OpenFileDialog
             {
                 Multiselect = true,
-                Filter = "Video Files(*.mp4;*.mkv)|*.mp4;*.mkv",
+                Filter = "Video Files(*.mp4;*.mkv)|*.mp4;*.mkv;*.txt",
             };
 
             if (path.ShowDialog() == DialogResult.OK)
@@ -146,11 +155,11 @@ namespace RandOpenFile
             if (File.Exists(fileTemp))
             {
                 File.Delete(fileTemp);
-                MessageBox.Show("刪除成功", "提示");
+                //MessageBox.Show("刪除成功", "提示");
             }
             else
             {
-                MessageBox.Show("找不到暫存", "提示");
+                //MessageBox.Show("找不到暫存", "提示");
             }
 
         }
@@ -164,22 +173,42 @@ namespace RandOpenFile
         /// <param name="folder"></param>
         private void DirFile(string folder)
         {
-            var Filter = new string[] { ".mp4", ".mkv", ".txt" };
-            var excludeFile = textBox2.Text.ToLower().Split('\n');
-            var excludeFolder = textBox3.Text.ToLower().Split('\n');
-
             foreach (var f in Directory.GetDirectories(folder))
                 DirFile(f);
 
-            if (!excludeFolder.Where(x => x.ToLower().Contains(folder.ToLower())).Any()) //未在排除資料夾名單內
-            {
+            if (FilterFolder(folder))
                 foreach (var filename in Directory.GetFiles(folder))
-                {
-                    if (!excludeFile.Where(x => x.ToLower().Contains(filename.ToLower())).Any()) //未在排除檔案名單內
-                        if (Filter.Where(x => filename.ToLower().Contains(x.ToLower())).Any()) //有在Filter名單內
-                            File.AppendAllText(fileTemp, $"{filename}{Environment.NewLine}");
-                }
-            }
+                    if (FilterFile(filename))
+                        File.AppendAllText(fileTemp, $"{filename}{Environment.NewLine}");
+        }
+
+        /// <summary>
+        /// 未在排除資料夾名單內
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
+        private bool FilterFolder(string? folder)
+        {
+            if (folder == null) return true;
+            var excludeFolder = textBox3.Text.Replace("\n", "").ToLower().Split('\r');
+            return !excludeFolder.Where(x => x.ToLower() == folder.ToLower()).Any();
+        }
+
+        /// <summary>
+        /// 排除檔案
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        private bool FilterFile(string filename)
+        {
+            var Filter = new string[] { ".mp4", ".mkv", ".txt" };
+            var excludeFile = textBox2.Text.Replace("\n", "").ToLower().Split('\r');
+
+            if (!excludeFile.Where(x => x.ToLower() == filename.ToLower()).Any()) //未在排除檔案名單內
+                if (Filter.Where(x => filename.ToLower().Contains(x.ToLower())).Any()) //有在Filter名單內
+                    return true;
+
+            return false;
         }
 
         /// <summary>

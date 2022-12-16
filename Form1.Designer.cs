@@ -53,7 +53,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 93);
+            this.label2.Location = new System.Drawing.Point(12, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 1;
@@ -62,7 +62,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 172);
+            this.label3.Location = new System.Drawing.Point(12, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 2;
@@ -82,7 +82,7 @@
             // List2
             // 
             this.List2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.List2.Location = new System.Drawing.Point(269, 109);
+            this.List2.Location = new System.Drawing.Point(269, 117);
             this.List2.Name = "List2";
             this.List2.Size = new System.Drawing.Size(47, 61);
             this.List2.TabIndex = 4;
@@ -93,7 +93,7 @@
             // List3
             // 
             this.List3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.List3.Location = new System.Drawing.Point(269, 189);
+            this.List3.Location = new System.Drawing.Point(269, 197);
             this.List3.Name = "List3";
             this.List3.Size = new System.Drawing.Size(47, 60);
             this.List3.TabIndex = 5;
@@ -105,9 +105,9 @@
             // 
             this.Clear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Clear.Location = new System.Drawing.Point(73, 6);
+            this.Clear.Location = new System.Drawing.Point(241, 6);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(243, 23);
+            this.Clear.Size = new System.Drawing.Size(75, 23);
             this.Clear.TabIndex = 6;
             this.Clear.Text = "清除暫存";
             this.Clear.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             // 
             this.OKBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKBtn.Location = new System.Drawing.Point(12, 255);
+            this.OKBtn.Location = new System.Drawing.Point(12, 263);
             this.OKBtn.Name = "OKBtn";
             this.OKBtn.Size = new System.Drawing.Size(304, 23);
             this.OKBtn.TabIndex = 7;
@@ -140,7 +140,7 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(12, 110);
+            this.textBox2.Location = new System.Drawing.Point(12, 118);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -151,7 +151,7 @@
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(12, 189);
+            this.textBox3.Location = new System.Drawing.Point(12, 197);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -162,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 287);
+            this.ClientSize = new System.Drawing.Size(328, 291);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
