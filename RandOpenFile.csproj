@@ -12,6 +12,7 @@
 		<Description>凜醬我婆</Description>
 		<UseWPF>False</UseWPF>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
